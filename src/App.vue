@@ -1,32 +1,43 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <main id="app">
+    <AppHeader/>
+    <div class="pages">
+      <router-view/>
     </div>
-    <router-view/>
-  </div>
+    <AppFooter/>
+  </main>
 </template>
+<script>
 
+  import AppHeader from './components/base/Header.vue';
+  import AppFooter from './components/base/Footer.vue';
+
+  export default {
+    components: {
+      AppHeader,
+      AppFooter,
+    },
+  };
+</script>
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  @import '~reset-css';
+  @import "~tailwindcss/dist/base";
+  // @Todo Not good enough
+  @import "~tailwindcss/dist/components";
+  // @Todo Not good enough
+  @import "~tailwindcss/dist/utilities"; // @Todo Not good enough
 
-#nav {
-  padding: 30px;
+  #app {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #000000;
+    width: 100%;
+    height: 100%;
+  }
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
+  #nav {
+    .router-link-exact-active {
       color: #42b983;
     }
   }
-}
 </style>
